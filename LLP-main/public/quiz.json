@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "question": "What is the meaning of the word 'benevolent'?",
+    "options": [
+      "Wishing to do good",
+      "Showing anger",
+      "Indifferent or apathetic",
+      "Being strict"
+    ],
+    "answer": "Wishing to do good",
+    "description": "The word 'benevolent' describes someone who is kind and willing to help others."
+  },
+  {
+    "id": 2,
+    "question": "Which of the following sentences is grammatically correct?",
+    "options": [
+      "She don't like apples.",
+      "He goes to the store every day.",
+      "They is playing football.",
+      "I seen the movie yesterday."
+    ],
+    "answer": "He goes to the store every day.",
+    "description": "This sentence is correct because it uses the proper subject-verb agreement."
+  },
+  {
+    "id": 3,
+    "question": "What does the term 'synonym' mean?",
+    "options": [
+      "A word with the opposite meaning",
+      "A word that has the same meaning",
+      "A word that describes a noun",
+      "A word used to express an action"
+    ],
+    "answer": "A word that has the same meaning",
+    "description": "A synonym is a word that has the same or similar meaning as another word."
+  },
+  {
+    "id": 4,
+    "question": "Choose the correct form of the verb: 'He _____ to the music.'",
+    "options": ["listened", "listening", "listen", "was listened"],
+    "answer": "listened",
+    "description": "The correct form is 'listened,' which is the past tense of 'listen.'"
+  },
+  {
+    "id": 5,
+    "question": "What is the opposite of 'happy'?",
+    "options": ["Joyful", "Sad", "Angry", "Excited"],
+    "answer": "Sad",
+    "description": "The opposite of 'happy' is 'sad,' which describes a feeling of unhappiness."
+  },
+  {
+    "id": 6,
+    "question": "What does the phrase 'break the ice' mean?",
+    "options": [
+      "To destroy something",
+      "To start a conversation in a social setting",
+      "To physically break ice",
+      "To feel cold"
+    ],
+    "answer": "To start a conversation in a social setting",
+    "description": "The phrase 'break the ice' means to initiate conversation in a social situation, often to relieve tension."
+  }
+]
