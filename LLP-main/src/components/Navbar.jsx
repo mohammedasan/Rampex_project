@@ -1,6 +1,5 @@
-import React from "react";
+// import React from "react";
 import { Link } from "react-router-dom"; // Use Link for client-side navigation
-
 const Navbar = () => {
   return (
     <header className="h-16 shadow-sm">
@@ -36,7 +35,7 @@ const Navbar = () => {
           </ul>
 
           <button className="px-5 py-1 mt-2 font-medium transition-all border rounded border-primary hover:bg-primary hover:text-white md:mt-0">
-            Login
+          <Link to="/login">Login</Link>
           </button>
         </div>
       </nav>
