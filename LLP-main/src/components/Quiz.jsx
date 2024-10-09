@@ -144,10 +144,9 @@ const Quiz = () => {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [highestScore, setHighestScore] = useState(null); // To hold the highest score
-  const [username, setUsername] = useState(""); // To hold the username
+  const [highestScore, setHighestScore] = useState(null); 
+  const [username, setUsername] = useState("");
 
-  // UseEffect to fetch questions
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
@@ -166,7 +165,6 @@ const Quiz = () => {
     fetchQuestions();
   }, []);
 
-  // Handle answer selection
   const handleAnswerSelect = (questionId, selectedOption) => {
     if (showResult) return;
     setAnswers((prevAnswers) => ({
@@ -175,19 +173,17 @@ const Quiz = () => {
     }));
   };
 
-  // Handle submission of quiz
   const handleSubmit = async () => {
     setLoading(true);
     try {
       const response = await fetch("http://localhost:5000/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, answers }), // Include username
+        body: JSON.stringify({ username, answers }),
       });
       const result = await response.json();
       setScore(result.score);
       
-      // Fetch highest score for the user after submission
       const highestScoreResponse = await fetch(`http://localhost:5000/api/highest-score/${username}`);
       const highestScoreData = await highestScoreResponse.json();
       setHighestScore(highestScoreData.highestScore);
@@ -200,7 +196,6 @@ const Quiz = () => {
     }
   };
 
-  // Reset the quiz
   const handleReset = () => {
     const resetAnswers = {};
     questions.forEach((question) => {
@@ -209,7 +204,7 @@ const Quiz = () => {
     setAnswers(resetAnswers);
     setShowResult(false);
     setScore(0);
-    setHighestScore(null); // Reset highest score on reset
+    setHighestScore(null); 
   };
 
   return (
@@ -217,14 +212,14 @@ const Quiz = () => {
       <div className="md:w-9/12 w-[90%] mx-auto mb-8 flex flex-col md:flex-row">
         <div className="md:w-[70%]">
           {/* Input for username */}
-          <input 
+          {/* <input 
             type="text" 
             value={username} 
             onChange={(e) => setUsername(e.target.value)} 
             placeholder="Enter your username" 
             className="border border-gray-300 rounded p-2 mb-4" 
             required 
-          />
+          /> */}
           {questions.map((qus, ind) => (
             <div
               key={qus._id} 

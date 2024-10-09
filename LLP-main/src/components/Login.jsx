@@ -19,12 +19,14 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
+      console.log(data);
       if (response.ok) {
-        localStorage.setItem("username", data);
+        console.log(data.username)
+        localStorage.removeItem("username");
+        localStorage.setItem("username", data.username);
         alert("Login successful!");
         navigate('/');
         window.location.reload();
-        console.log(data)
       } else {
         alert(data.message);
       }

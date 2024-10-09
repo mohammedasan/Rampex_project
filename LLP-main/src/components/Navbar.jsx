@@ -81,7 +81,7 @@ const Navbar = () => {
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
     if (storedUsername) {
-      setUsername(storedUsername); // storedUsername is already a string
+      setUsername(storedUsername); 
       console.log('Username from localStorage:', storedUsername);
     }
   }, []);
@@ -120,7 +120,7 @@ const Navbar = () => {
 
           {username ? (
             <div className="flex items-center space-x-4">
-              <span className="font-medium text-primary">Hello, {username}</span>
+              <span className="font-medium text-primary">Welcome, Learner</span>
               <button
                 onClick={handleLogout}
                 className="px-5 py-1 mt-2 font-medium transition-all border rounded border-primary hover:bg-primary hover:text-white md:mt-0"

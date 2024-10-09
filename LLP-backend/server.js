@@ -162,7 +162,7 @@
 // // Start the server
 // app.listen(port, () => {
 //   console.log(`Server is running on http://localhost:${port}`);
-// });
+//});
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -195,8 +195,6 @@ const loginDetailsSchema = new mongoose.Schema({
 
 const LoginDetail = mongoose.model("LoginDetail", loginDetailsSchema);
 
-// ================= Quiz API Routes ==================
-// Fetch all quiz questions
 app.get("/api/questions", async (req, res) => {
   try {
     const questions = await Quiz.find();
@@ -206,7 +204,6 @@ app.get("/api/questions", async (req, res) => {
   }
 });
 
-// Add a new quiz question
 app.post("/api/questions", async (req, res) => {
   const { question, options, answer, description } = req.body;
   try {
@@ -218,7 +215,6 @@ app.post("/api/questions", async (req, res) => {
   }
 });
 
-// Update a quiz question
 app.put("/api/questions/:id", async (req, res) => {
   const { id } = req.params;
   const { question, options, answer, description } = req.body;
@@ -237,7 +233,6 @@ app.put("/api/questions/:id", async (req, res) => {
   }
 });
 
-// Delete a quiz question
 app.delete("/api/questions/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -251,7 +246,6 @@ app.delete("/api/questions/:id", async (req, res) => {
   }
 });
 
-// Submit quiz answers and calculate the score
 app.post("/api/submit", async (req, res) => {
   const { answers } = req.body;
 
@@ -268,7 +262,7 @@ app.post("/api/submit", async (req, res) => {
     const quizResult = new QuizResult({
       username,
       score,
-      quizId: /* if needed, reference to the quiz id, e.g., question.quizId */,
+      quizId
     });
 
     await quizResult.save();
@@ -281,36 +275,31 @@ app.get("/api/highest-score/:username", async (req, res) => {
   const { username } = req.params;
 
   try {
-    const highestScore = await QuizResult.findOne({ username }).sort({ score: -1 }); // Get the highest score
+    const highestScore = await QuizResult.findOne({ username }).sort({ score: -1 });
     if (highestScore) {
       res.json({ highestScore: highestScore.score });
     } else {
-      res.json({ highestScore: 0 }); // No score found for the user
+      res.json({ highestScore: 0 }); 
     }
   } catch (error) {
     res.status(500).json({ message: "Failed to retrieve highest score" });
   }
 });
 
-// ================= Login/Signup API Routes ==================
-// Signup route
 app.post("/api/signup", async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // Check if the user already exists
+    
     const existingUser = await LoginDetail.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    // Hash the password before storing it
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create a new user
     const newUser = new LoginDetail({ username, email, password: hashedPassword });
 
-    // Save the user in the database
     await newUser.save();
 
     res.status(201).json({ message: "User registered successfully" });
@@ -320,31 +309,28 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-// Login route
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Find the user by email
     const user = await LoginDetail.findOne({ email });
+
     if (!user) {
       return res.status(400).json({ message: "User not found" });
     }
-
-    // Compare the password
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(400).json({ message: "Invalid password" });
     }
-    console.log(username)
-    // Return success with the username
+    
+    console.log(user)
     res.status(200).json({username: user.username});
+
   } catch (error) {
     res.status(500).json({ message: "Failed to login" });
   }
 });
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

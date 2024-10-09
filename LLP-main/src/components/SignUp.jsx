@@ -44,10 +44,9 @@ const SignUp = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Optionally, redirect to the login page or show a success message
         navigate('/login');
       } else {
-        alert(data.message); // Show error message
+        alert(data.message); 
       }
     } catch (error) {
       console.error('Error:', error);
@@ -59,7 +58,7 @@ const SignUp = () => {
     <div className="h-screen w-screen bg-slate-50 flex flex-row justify-center items-center">
       <form
         className="h-[29rem] w-[25rem] md:w-[26rem] border-2 border-gray-700 rounded-2xl bg-white box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); flex flex-col gap-6 justify-center items-center"
-        onSubmit={handleSubmit} // Add this to handle form submission
+        onSubmit={handleSubmit} 
       >
         <h1 className="text-2xl text-black font-bold hover:text-yellow-400">Si<span className="text-yellow-400 font-serif">G</span>nup</h1>
         <input
@@ -70,7 +69,7 @@ const SignUp = () => {
           placeholder="UserName"
           required
           value={username}
-          onChange={(e) => setUsername(e.target.value)} // Update state on change
+          onChange={(e) => setUsername(e.target.value)} 
         />
         <input
           className="px-9 py-4 border-b-2 border-yellow-300 outline-none hover:border-2 hover:border-yellow-400 hover:bg-yellow-50"
@@ -80,7 +79,7 @@ const SignUp = () => {
           placeholder="E-Mail"
           required
           value={email}
-          onChange={(e) => setEmail(e.target.value)} // Update state on change
+          onChange={(e) => setEmail(e.target.value)} 
         />
         <input
           className="px-9 py-4 border-b-2 border-yellow-300 outline-none hover:border-2 hover:border-yellow-400 hover:bg-yellow-50"
@@ -90,7 +89,7 @@ const SignUp = () => {
           placeholder="Password"
           required
           value={password}
-          onChange={(e) => setPassword(e.target.value)} // Update state on change
+          onChange={(e) => setPassword(e.target.value)} 
         />
         <div>
           <p className="font-semibold text-yellow-400">
